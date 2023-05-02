@@ -562,9 +562,3 @@ err:
     free(sig_file);
     return NULL;
 }
-
-int
-main(int argc, char **argv)
-{
-    return 0;
-}
