@@ -9,8 +9,8 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    lib.addIncludePath("/opt/homebrew/include");
-    lib.addSystemIncludePath("/opt/homebrew/lib");
+    lib.addIncludePath(.{ .path = "/opt/homebrew/include" });
+    lib.addLibraryPath(.{ .path = "/opt/homebrew/lib" });
     lib.linkSystemLibrary("sodium");
     b.installArtifact(lib);
 }
