@@ -5,10 +5,11 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
     const lib = b.addStaticLibrary(.{
         .name = "minisign_verify",
-        .root_source_file = .{ .path = "src/minisign_verify.c" },
         .target = target,
         .optimize = optimize,
+        .strip = true,
     });
+    lib.addCSourceFile(.{ .file = .{ .path = "src/minisign_verify.c" } });
     lib.addIncludePath(.{ .path = "/opt/homebrew/include" });
     lib.addLibraryPath(.{ .path = "/opt/homebrew/lib" });
     lib.linkSystemLibrary("sodium");
